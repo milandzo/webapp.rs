@@ -34,7 +34,14 @@ $admin=$_POST['admin'];
 
 $pdoquery="UPDATE korisnik SET ime=:ime,prezime=:prezime,posta=:posta,sifra=:sifra,admin=:admin WHERE id=:id";
 $pokreni=$konekcija->prepare($pdoquery);
-$pokreni_izvrsavanje=$pokreni->execute(array(":ime"=>$ime,":prezime"=>$prezime,":posta"=>$posta,":sifra"=>$sifra,":admin"=>$admin,":id"=>$id));
+$pokreni->bindParam(':id');
+$pokreni->bindParam(':ime');
+$pokreni->bindParam(':prezime');
+$pokreni->bindParam(':posta');
+$pokreni->bindParam(':sifra');
+$pokreni->bindParam(':admin');
+    
+$pokreni_izvrsavanje=$pokreni->execute();
 
 if($pokreni_izvrsavanje){
     echo "<center>Podaci su promenjeni</center>";
