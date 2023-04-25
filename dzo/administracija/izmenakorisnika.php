@@ -34,12 +34,12 @@ $admin=$_POST['admin'];
 
 $pdoquery="UPDATE korisnik SET ime=:ime,prezime=:prezime,posta=:posta,sifra=:sifra,admin=:admin WHERE id=:id";
 $pokreni=$konekcija->prepare($pdoquery);
-$pokreni->bindParam(':id');
-$pokreni->bindParam(':ime');
-$pokreni->bindParam(':prezime');
-$pokreni->bindParam(':posta');
-$pokreni->bindParam(':sifra');
-$pokreni->bindParam(':admin');
+$pokreni->bindParam(':id',$id);
+$pokreni->bindParam(':ime',$ime);
+$pokreni->bindParam(':prezime',$prezime);
+$pokreni->bindParam(':posta',$posta);
+$pokreni->bindParam(':sifra',$sifra);
+$pokreni->bindParam(':admin',$admin);
     
 $pokreni_izvrsavanje=$pokreni->execute();
 
