@@ -6,7 +6,7 @@ if(isset($_POST['obrisi'])){
     
     $obrisi="DELETE from korisnik where id=:id";
     $pokreni=$konekcija->prepare($obrisi);
-    $izvrsavanje=$pokreni->execute(array(":id",$id));
+    $izvrsavanje=$pokreni->execute(array(":id"=>$id));
     
     if($izvrsavanje){
         echo "Korisnik je obrisan";
